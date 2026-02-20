@@ -28,10 +28,8 @@ jobs:
       - name: Echo version
         env:
           NEW_VERSION: ${{ steps.version.outputs.version }}
-          NEW_VERSION_TAG: ${{ steps.version.outputs.version_tag }}
         run: |
           echo "New version: $NEW_VERSION"
-          echo "New version tag: $NEW_VERSION_TAG"
 
       # - name: Docker Hub Login
       #   uses: docker/login-action@v3.7.0
