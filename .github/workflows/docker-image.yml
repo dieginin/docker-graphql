@@ -29,4 +29,4 @@ jobs:
         uses: docker/build-push-action@v6.19.2
         with:
           push: true
-          tags: dieginin/docker-graphql:0.0.3
+          tags: dieginin/docker-graphql:0.0.4
