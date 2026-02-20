@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
           filter: blob:none
 
-      - name: Git Semantic Version
+      - name: Git Semantic Versions
         id: version
         uses: PaulHatch/semantic-version@v6.0.1
         with:
