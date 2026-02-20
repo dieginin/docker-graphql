@@ -28,6 +28,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Echo version
         env:
           NEW_VERSION: ${{ steps.version.outputs.version }}
