@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
+          filter: blob:none
 
       - name: Git Semantic Version
         id: version
@@ -23,12 +24,6 @@ jobs:
           major_pattern: 'major:'
           minor_pattern: 'feat:'
 
-      - name: Docker Hub Login
-        uses: docker/login-action@v3.7.0
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
       - name: Echo version
         env:
           NEW_VERSION: ${{ steps.version.outputs.version }}
@@ -36,6 +31,12 @@ jobs:
         run: |
           echo "New version: $NEW_VERSION"
           echo "New version tag: $NEW_VERSION_TAG"
+
+      # - name: Docker Hub Login
+      #   uses: docker/login-action@v3.7.0
+      #   with:
+      #     username: ${{ secrets.DOCKER_USER }}
+      #     password: ${{ secrets.DOCKER_PASSWORD }}
 
       # - name: Setup Docker Buildx
       #   uses: docker/setup-buildx-action@v3.12.0
