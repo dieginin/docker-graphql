@@ -17,13 +17,10 @@ jobs:
           fetch-depth: 0
 
       - name: Check login
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo 'Iniciando login'
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-          echo 'Fin del login'
+        uses: docker/login-action@v3.7.0
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       # - name: Build the Docker image
       #   run: docker build . --tag my-image-name:$(date +%s)
