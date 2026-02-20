@@ -21,7 +21,7 @@ jobs:
         id: version
         uses: PaulHatch/semantic-version@v6.0.1
         with:
-          major_pattern: 'chore:'
+          major_pattern: 'major:'
           bump_each_commit: true
           version_from_branch: true
 
@@ -36,7 +36,10 @@ jobs:
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.19.2
+        env:
+          IMAGE: dieginin/docker-graphql
+          VERSION: steps.version.outputs.version
         with:
           push: true
-          tags: dieginin/docker-graphql,dieginin/docker-graphql:${{ steps.version.outputs.version }}
+          tags: ${{ env.IMAGE }}:${{ env.VERSION }},${{ env.IMAGE }}
           platforms: linux/amd64,linux/arm64
