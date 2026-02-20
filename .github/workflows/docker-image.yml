@@ -22,11 +22,8 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker Image
-        run: docker build -t dieginin/docker-graphql:0.0.2 .
-
-      - name: Push Docker Image
-        run: docker push dieginin/docker-graphql:0.0.2
-
-      # - name: Build the Docker image
-      #   run: docker build . --tag my-image-name:$(date +%s)
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v6.19.2
+        with:
+          push: true
+          tags: dieginin/docker-graphql:0.0.2
