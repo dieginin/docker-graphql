@@ -20,6 +20,10 @@ jobs:
       - name: Git Semantic Version
         id: version
         uses: PaulHatch/semantic-version@v6.0.1
+        with:
+          major_pattern: 'major:'
+          version_format: '${major}.${minor}.${patch}-prerelease${increment}'
+          bump_each_commit: true
 
       - name: Echo version
         env:
